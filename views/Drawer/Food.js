@@ -1,34 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
-
-import { Header, ListItem } from 'react-native-elements';
+import { View, Text, StyleSheet } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import { Header } from 'react-native-elements';
 import normalize from 'react-native-elements/src/helpers/normalizeText'
 
-const list = [
-  {
-    name: '신관',
-    subtitle: '학생회관 밥',
-  },
-  {
-    name: '학생생활관',
-    subtitle: '긱사 밥',
-  },
-  {
-    name: '한식',
-    subtitle: '갈비찜 존맛탱'
-  },
-  {
-    name: '중•일•양식',
-    subtitle: '짬뽕 존맛탱',
-  },
-  {
-    name: '치킨',
-    subtitle: '치킨은 양념이지',
-  },
-]
+import FoodList from './FoodList/foodlist';
+import Haksik from './FoodList/haksik'
+import Dormitory from './FoodList/dormitory';
 
 
-export default class Food extends Component {
+export default class FoodMainView extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -37,30 +18,30 @@ export default class Food extends Component {
           centerComponent={{ text: '뭐먹을까', style: { color: '#fff', fontSize: normalize(18), fontWeight: 'bold' }}}
           outerContainerStyles={styles.headerStyle}
         />
-        <View>
-          {
-            list.map((l, i) => (
-              <ListItem
-                key={i}
-                title={l.name}
-                subtitle={l.subtitle}
-                titleStyle={styles.listTitleStyle}
-                subtitleStyle={styles.listSubtitleStyle}
-                onPress={() => 
-                  {
-                    Alert.alert("노렸잼.")
-                  }
-                }
-                underlayColor="rgba(0,0,0,0)"
-              />
-            ))
-          }
+        <View style={{flex: 1}}>
+          <FoodStack />
         </View>
       </View>
     )
   }
 }
 
+const FoodStack = StackNavigator(
+  {
+    FoodList : {
+      screen: FoodList, 
+    },
+    Haksik: {
+      screen: Haksik,
+    },
+    Dormitory: {
+      screen: Dormitory,
+    }
+  }, {
+    initialRouteName: 'FoodList',
+    headerMode:'none',
+  }
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -69,12 +50,4 @@ const styles = StyleSheet.create({
   headerStyle: {
     backgroundColor:'rgba(0,0,0,.8)'
   },
-  listTitleStyle: {
-    fontSize: normalize(20),
-    textAlign:'center',
-    fontWeight:'bold'
-  },
-  listSubtitleStyle: {
-    textAlign:'center'
-  }
 })

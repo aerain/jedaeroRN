@@ -5,18 +5,18 @@
  */
 
 import React, { Component } from 'react';
-import { View, StatusBar, StyleSheet } from 'react-native';
+import { SafeAreaView , StatusBar, StyleSheet } from 'react-native';
 import Home from './views/Home';
 
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.main}>
+      <SafeAreaView style={styles.main}>
         <StatusBar
           backgroundColor="rgba(0,0,0,.8)"
         />
         <Home />
-      </View>
+      </SafeAreaView>
     );
   }
 }
