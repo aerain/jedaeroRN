@@ -32,7 +32,14 @@ const FoodStack = StackNavigator(
       screen: FoodList, 
     },
     Haksik: {
-      screen: HaksikTap,
+      screen: (props) => (
+        <View style={{flex : 1, paddingTop:20}}>
+          <View style={{justifyContent: 'center', alignItems:'center'}}>
+            <Text style={{fontSize:normalize(30), fontWeight:'bold'}}>학식 메뉴</Text>
+          </View>
+          <HaksikTap />
+        </View>
+      ),
     },
     Dormitory: {
       screen: Dormitory,

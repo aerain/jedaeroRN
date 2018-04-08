@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import normalize from 'react-native-elements/src/helpers/normalizeText';
 import cheerio from 'react-native-cheerio';
 import { TabNavigator } from 'react-navigation';
@@ -104,18 +104,26 @@ class Haksik extends Component {
 
 
   render = () => {
-    console.log(this.state)
-    return (
-      <View>
-        <Text>
-          {this.state.meal ? this.state.meal.combo : ""}{"\r\n\r\n"}
-          {this.state.meal ? this.state.meal.dinner : ""}{"\r\n\r\n"}
-          {this.state.meal ? this.state.meal.special : ""}{"\r\n\r\n"}
-          {this.state.meal ? this.state.meal.western : ""}{"\r\n\r\n"}
-          {this.state.meal ? this.state.meal.chinese : ""}{"\r\n\r\n"}
-        </Text>
-      </View>
-    )
+
+    if(!this.state.meal) {
+      return (
+        <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+          <ActivityIndicator size={50} />
+        </View>
+      ) 
+    } else {
+      return (
+        <ScrollView style={styles.container}>
+          <Text style={{fontSize:normalize(20), textAlign:'center'}}>
+            {this.state.meal.combo}{"\r\n\r\n"}
+            {this.state.meal.dinner}{"\r\n\r\n"}
+            {this.state.meal.special}{"\r\n\r\n"}
+            {this.state.meal.western}{"\r\n\r\n"}
+            {this.state.meal.chinese}{"\r\n\r\n"}
+          </Text>
+        </ScrollView>
+      )
+    }
   }
 }
 
@@ -157,3 +165,14 @@ export default HaksikTap = TabNavigator (
 
   }
 );
+
+let styles = StyleSheet.create({
+  container: {
+    flex:1,
+    paddingTop:20,
+  },
+  title: {
+    justifyContent:'center',
+    alignItems:'center'
+  }
+})
