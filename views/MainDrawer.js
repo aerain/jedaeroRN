@@ -5,6 +5,7 @@ import { DrawerNavigator } from 'react-navigation';
 
 import Bus from './Drawer/Bus'
 import Food from './Drawer/Food'
+import library from './Drawer/library'
 
 export default Main = DrawerNavigator (
   {
@@ -18,6 +19,12 @@ export default Main = DrawerNavigator (
       screen : Food,
       navigationOptions: {
         title : "뭐먹을까"
+      }
+    },
+    library : {
+      screen : library,
+      navigationOptions : {
+        title : "도서관"
       }
     }
   }
