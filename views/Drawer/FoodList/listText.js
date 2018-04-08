@@ -1,4 +1,5 @@
 import React from 'react';
+import { Alert } from 'react-native';
 import { Avatar } from 'react-native-elements';
 
 export default listText = [
@@ -6,7 +7,7 @@ export default listText = [
     name: '신관',
     subtitle: '학생회관 밥',
     _clickFood: () => {
-      this.props.navigation.navigate("Haksik");
+      console.log(this)
     },
     icon: (
       <Avatar 
@@ -18,9 +19,9 @@ export default listText = [
   },
   {
     name: '학생생활관',
-    subtitle: '긱사 밥',
+    subtitle: '긱사 밥 노맛',
     _clickFood: () => {
-      this.props.navigation.navigate("Dormitory");
+      Alert.alert("끼야악");
     },
     icon: (
       <Avatar 

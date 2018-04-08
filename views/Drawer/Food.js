@@ -5,7 +5,7 @@ import { Header } from 'react-native-elements';
 import normalize from 'react-native-elements/src/helpers/normalizeText'
 
 import FoodList from './FoodList/foodlist';
-import Haksik from './FoodList/haksik'
+import HaksikTap from './FoodList/haksik'
 import Dormitory from './FoodList/dormitory';
 
 
@@ -32,7 +32,7 @@ const FoodStack = StackNavigator(
       screen: FoodList, 
     },
     Haksik: {
-      screen: Haksik,
+      screen: HaksikTap,
     },
     Dormitory: {
       screen: Dormitory,
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerStyle: {
-    backgroundColor:'rgba(0,0,0,.8)'
+    backgroundColor:'rgba(0,0,0,.75)'
   },
 })
