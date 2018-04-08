@@ -4,8 +4,6 @@ import normalize from 'react-native-elements/src/helpers/normalizeText';
 import cheerio from 'react-native-cheerio';
 import { TabNavigator } from 'react-navigation';
 
-import haksikCrawl from '../../../jedaeroAPI/Food/haksikAPI';
-
 class Haksik extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +36,7 @@ class Haksik extends Component {
           strjson = strjson.replace(/\n/gi, '\\r\\n');
           
           data = JSON.parse(strjson);
-          
+
           switch (this.props.DoW) {
             case "mon":
               this.setState({
@@ -108,7 +106,7 @@ class Haksik extends Component {
     if(!this.state.meal) {
       return (
         <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-          <ActivityIndicator size={50} />
+          <ActivityIndicator size={50} color='rgba(0,0,0,.75)'/>
         </View>
       ) 
     } else {
@@ -162,6 +160,7 @@ export default HaksikTap = TabNavigator (
   }, {
     tabBarPosition: 'bottom',
     lazy: false,
+    backBehavior: 'none',
     tabBarOptions: {
       inactiveBackgroundColor: 'rgba(255,255,255,1)',
       activeBackgroundColor: "rgba(0,0,0,.75)",
