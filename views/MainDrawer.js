@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet ,SafeAreaView, ScrollView, View, Image } from 'react-native';
 import { Header } from 'react-native-elements';
-import { DrawerNavigator } from 'react-navigation';
+import { DrawerNavigator, DrawerItems } from 'react-navigation';
 
 import Bus from './Drawer/Bus'
 import Food from './Drawer/Food'
@@ -27,5 +27,16 @@ export default Main = DrawerNavigator (
         title : "도서관"
       }
     }
+  }, {
+    contentComponent : (props) => (
+      <ScrollView>
+        <SafeAreaView style={{flex:1}} forceInset={{ top: 'always', horizontal: 'never' }}>
+          <View style={{paddingLeft:30, paddingRight:30, width:"100%", height:150, backgroundColor:'rgba(12,80,160,1)', justifyContent:'center', alignItems: 'center'}}>
+            <Image source={require('../images/logo.png')} style={{width: "100%"}} resizeMode="contain" />
+          </View>
+          <DrawerItems {...props} />
+        </SafeAreaView>
+      </ScrollView>
+    )
   }
 )

@@ -16,7 +16,7 @@ export default class App extends Component {
     return (
       <SafeAreaView style={styles.main}>
         <StatusBar
-          backgroundColor="rgba(0,0,0,.8)"
+          backgroundColor="rgba(12,80,160,1)"
         />
         <Home />
       </SafeAreaView>

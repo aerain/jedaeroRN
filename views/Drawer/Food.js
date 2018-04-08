@@ -55,6 +55,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerStyle: {
-    backgroundColor:'rgba(0,0,0,.75)'
+    backgroundColor:'rgba(12,80,160,1)'
   },
 })

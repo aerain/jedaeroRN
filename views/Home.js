@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,.75)',
+    backgroundColor: 'rgba(12,80,160,1)',
     padding: 20,
   },
   logo: {
