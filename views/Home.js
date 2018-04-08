@@ -11,12 +11,12 @@ import {
   View,
   Image,
   TouchableOpacity,
-  Alert
 } from 'react-native';
 
 import { StackNavigator, NavigationActions } from 'react-navigation';
 
 import Main from './MainDrawer';
+import SmartCheck from './SmartCheck';
 
 class Home extends Component {
   constructor(props) {
@@ -42,7 +42,7 @@ class Home extends Component {
               style={styles.button}
             />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("eLearn")} >
             <Image
               source={require('../images/smart_button.png')}
               resizeMode="stretch"
@@ -63,10 +63,13 @@ class Home extends Component {
 export default StackNavigator (
   {
     Home: {
-      screen: Home
+      screen: Home,
     },
     Main : {
-      screen : (props) => <Main />
+      screen : (props) => <Main />,
+    },
+    eLearn : {
+      screen : (props) => <SmartCheck screenProps={props}/>,
     }
   },{
     navigationOptions: {

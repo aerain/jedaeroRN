@@ -38,7 +38,7 @@ class Haksik extends Component {
           strjson = strjson.replace(/\n/gi, '\\r\\n');
           
           data = JSON.parse(strjson);
-          console.log(data);
+          
           switch (this.props.DoW) {
             case "mon":
               this.setState({
@@ -162,7 +162,25 @@ export default HaksikTap = TabNavigator (
   }, {
     tabBarPosition: 'bottom',
     lazy: false,
-
+    tabBarOptions: {
+      inactiveBackgroundColor: 'rgba(255,255,255,1)',
+      activeBackgroundColor: "rgba(0,0,0,.75)",
+      inactiveBackgroundColor: "rgba(255,255,255,1)",
+      inactiveTintColor: "rgba(0,0,0,1)",
+      tabStyle: {
+        backgroundColor:"rgba(0,0,0,.75)",
+      },
+      labelStyle: {
+        fontSize: normalize(18),
+        fontWeight: 'bold',
+        
+      },
+      style: {
+        backgroundColor:'rgba(255,255,255,1)'
+      },  
+      renderIndicator: () => null
+    },
+    
   }
 );
 
