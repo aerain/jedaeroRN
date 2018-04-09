@@ -106,7 +106,7 @@ class Haksik extends Component {
     if(!this.state.meal) {
       return (
         <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-          <ActivityIndicator size={50} color='rgba(0,0,0,.75)'/>
+          <ActivityIndicator size={50} color='rgba(12,80,160,1)'/>
         </View>
       ) 
     } else {
@@ -162,21 +162,17 @@ export default HaksikTap = TabNavigator (
     lazy: false,
     backBehavior: 'none',
     tabBarOptions: {
-      inactiveBackgroundColor: 'rgba(255,255,255,1)',
-      activeBackgroundColor: "rgba(0,0,0,.75)",
-      inactiveBackgroundColor: "rgba(255,255,255,1)",
-      inactiveTintColor: "rgba(0,0,0,1)",
-      tabStyle: {
-        backgroundColor:"rgba(0,0,0,.75)",
-      },
+      activeTintColor: "rgba(12,80,160,1)",
+      inactiveBackgroundColor: "white",
+      activeBackgroundColor:'rgba(12,80,160,1)',
+      inactiveTintColor: 'black',
       labelStyle: {
         fontSize: normalize(18),
         fontWeight: 'bold',
-        
-      },
+      }, 
       style: {
-        backgroundColor:'rgba(255,255,255,1)'
-      },  
+        backgroundColor:'white'
+      },
       renderIndicator: () => null
     },
     

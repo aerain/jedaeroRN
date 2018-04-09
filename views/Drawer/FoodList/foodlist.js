@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Alert } from 'react-native';
+import { ScrollView, StyleSheet, Alert, View } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import normalize from 'react-native-elements/src/helpers/normalizeText'
-import listText from './listText';
 
 export default class FoodList extends Component {
   constructor(props) {
@@ -16,13 +15,6 @@ export default class FoodList extends Component {
         _clickFood: () => {
           this.props.navigation.navigate("Haksik")
         },
-        icon: (
-          <Avatar 
-            medium
-            source={require('../../../images/rice.png')}
-            overlayContainerStyle={{backgroundColor: 'rgba(0,0,0,0)'}}
-          />
-        )
       },
       {
         name: '학생생활관',
@@ -30,13 +22,6 @@ export default class FoodList extends Component {
         _clickFood: () => {
           Alert.alert("끼야악");
         },
-        icon: (
-          <Avatar 
-            medium
-            source={require('../../../images/rice.png')}
-            overlayContainerStyle={{backgroundColor: 'rgba(0,0,0,0)'}}
-          />
-        )
       },
       {
         name: '한식',
@@ -44,13 +29,6 @@ export default class FoodList extends Component {
         _clickFood: () => {
           Alert.alert("끼야악");
         },
-        icon: (
-          <Avatar 
-            medium
-            source={require('../../../images/rice.png')}
-            overlayContainerStyle={{backgroundColor: 'rgba(0,0,0,0)'}}
-          />
-        )
       },
       {
         name: '중•일•양식',
@@ -58,13 +36,6 @@ export default class FoodList extends Component {
         _clickFood: () => {
           Alert.alert("끼야악");
         },
-        icon: (
-          <Avatar 
-            medium
-            source={require('../../../images/rice.png')}
-            overlayContainerStyle={{backgroundColor: 'rgba(0,0,0,0)'}}
-          />
-        )
       },
       {
         name: '치킨',
@@ -72,31 +43,25 @@ export default class FoodList extends Component {
         _clickFood: () => {
           Alert.alert("끼야악");
         },
-        icon: (
-          <Avatar 
-            medium
-            source={require('../../../images/rice.png')}
-            overlayContainerStyle={{backgroundColor: 'rgba(0,0,0,0)'}}
-          />
-        )
       },
     ];
     return (
       <ScrollView>
         {
           listText.map((l, i) => (
-            <ListItem
-              key={i}
-              title={l.name}
-              subtitle={l.subtitle}
-              titleStyle={styles.listTitleStyle}
-              subtitleStyle={styles.listSubtitleStyle}
-              containerStyle={styles.listContainerStyle}
-              onPress={l._clickFood}
-              underlayColor="rgba(0,0,0,0)"
-              hideChevron={true}
-              leftIcon={l.icon}
-            />
+            <View elevation={2} style={{margin:5, borderRadius:5}}>
+              <ListItem
+                key={i}
+                title={l.name}
+                subtitle={l.subtitle}
+                titleStyle={styles.listTitleStyle}
+                subtitleStyle={styles.listSubtitleStyle}
+                containerStyle={styles.listContainerStyle}
+                onPress={l._clickFood}
+                underlayColor="rgba(0,0,0,0)"
+                hideChevron={true}
+              />
+            </View>
           ))
         }
       </ScrollView>
@@ -116,5 +81,6 @@ const styles = StyleSheet.create({
   listContainerStyle: {
     paddingTop:20,
     paddingBottom:20,
+    borderRadius:5,
   }
 })
