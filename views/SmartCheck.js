@@ -14,7 +14,8 @@ export default class SmartCheck extends Component {
         console.log(this);
         return (
             <View style={{flex:1}}>
-                <WebView source={{uri:'http://elearning.jejunu.ac.kr/'}} style={{flex:1}} />
+                {/* <WebView source={{uri:'http://elearning.jejunu.ac.kr/'}} style={{flex:1}} /> */}
+                <View style={{flex:1, backgroundColor:'black'}} />
                 <TouchableOpacity
                     style={{position:'absolute', right:20, bottom:20,}}
                     onPress={() => this.props.screenProps.navigation.dispatch(NavigationActions.back())}

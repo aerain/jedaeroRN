@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import normalize from 'react-native-elements/src/helpers/normalizeText';
 import cheerio from 'react-native-cheerio';
 import { TabNavigator } from 'react-navigation';
@@ -112,19 +112,29 @@ class Haksik extends Component {
     } else {
       return (
         <ScrollView style={styles.container}>
-          <Text style={{fontSize:normalize(20), textAlign:'center'}}>
-            {this.state.meal.combo}{"\r\n\r\n"}
-            {this.state.meal.dinner}{"\r\n\r\n"}
-            {this.state.meal.special}{"\r\n\r\n"}
-            {this.state.meal.western}{"\r\n\r\n"}
-            {this.state.meal.chinese}{"\r\n\r\n"}
-          </Text>
+          <HaksikList title="정식" food={this.state.meal.combo}/>
+          <HaksikList title="특식" food={this.state.meal.special}/>
+          <HaksikList title="양식" food={this.state.meal.western}/>
+          <HaksikList title="중식" food={this.state.meal.chinese}/>
+          <HaksikList title="정식 저녁" food={this.state.meal.dinner}/>
         </ScrollView>
       )
     }
   }
 }
 
+class HaksikList extends Component {
+  render() {
+    return (
+      <View elevation={1} style={styles.list}>
+        <View style={styles.foodlistContainer}>
+          <Text style={styles.foodlistTitle}>{this.props.title}</Text>
+        </View>
+        <Text style={styles.foodlist}>{this.props.food}</Text>
+      </View>
+    )
+  }
+}
 export default HaksikTap = TabNavigator (
   {
     Mon : {
@@ -168,7 +178,7 @@ export default HaksikTap = TabNavigator (
       inactiveTintColor: 'black',
       labelStyle: {
         fontSize: normalize(18),
-        fontWeight: 'bold',
+        fontFamily: 'NotoSansCJKkr-Thin'
       }, 
       style: {
         backgroundColor:'white'
@@ -182,10 +192,30 @@ export default HaksikTap = TabNavigator (
 let styles = StyleSheet.create({
   container: {
     flex:1,
-    paddingTop:20,
   },
   title: {
     justifyContent:'center',
     alignItems:'center'
+  },
+  foodlist: {fontSize:normalize(16), textAlign:'center', fontFamily:'NotoSansCJKkr-Thin'},
+  foodlistContainer: {
+    backgroundColor:'rgba(12,80,160,1)',
+    borderTopLeftRadius:20,
+    borderTopRightRadius:20
+  },
+  foodlistTitle: {
+    textAlign:'center',
+    fontSize: normalize(20),
+    fontFamily: 'NotoSansCJKkr-Thin',
+    color:'white'
+  },
+  list: {
+    marginLeft:10,
+    marginRight: 10,
+    marginTop:5,
+    marginBottom:5,
+    backgroundColor:'white',
+    borderTopLeftRadius:20,
+    borderTopRightRadius:20
   }
 })

@@ -5,7 +5,7 @@
 */
 
 import React, { Component } from 'react';
-import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, Text, TextInput } from 'react-native';
 import Home from './views/Home';
 
 export default class App extends Component {

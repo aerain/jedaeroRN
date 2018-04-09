@@ -10,6 +10,7 @@ export default class FoodList extends Component {
   render() {
     const listText = [
       {
+        key: 'haksik',
         name: '신관',
         subtitle: '학생회관 밥',
         _clickFood: () => {
@@ -17,6 +18,7 @@ export default class FoodList extends Component {
         },
       },
       {
+        key: 'dormitory',
         name: '학생생활관',
         subtitle: '긱사 밥 노맛',
         _clickFood: () => {
@@ -24,6 +26,7 @@ export default class FoodList extends Component {
         },
       },
       {
+        key: 'korean',
         name: '한식',
         subtitle: '갈비찜 존맛탱',
         _clickFood: () => {
@@ -31,6 +34,7 @@ export default class FoodList extends Component {
         },
       },
       {
+        key: 'foreign',
         name: '중•일•양식',
         subtitle: '짬뽕 존맛탱',
         _clickFood: () => {
@@ -38,6 +42,7 @@ export default class FoodList extends Component {
         },
       },
       {
+        key: 'chicken',
         name: '치킨',
         subtitle: '치킨은 양념이지',
         _clickFood: () => {
@@ -49,9 +54,8 @@ export default class FoodList extends Component {
       <ScrollView>
         {
           listText.map((l, i) => (
-            <View elevation={2} style={{margin:5, borderRadius:5}}>
+            <View key={i} elevation={2} style={{marginBottom:10, backgroundColor:'white'}}>
               <ListItem
-                key={i}
                 title={l.name}
                 subtitle={l.subtitle}
                 titleStyle={styles.listTitleStyle}
@@ -73,14 +77,16 @@ const styles = StyleSheet.create({
   listTitleStyle: {
     fontSize: normalize(20),
     textAlign:'center',
-    fontWeight:'bold'
+    fontFamily: 'NotoSansCJKkr-Thin',
+    fontWeight: 'bold',
   },
   listSubtitleStyle: {
-    textAlign:'center'
+    textAlign:'center',
+    fontFamily: "NotoSansCJKkr-Thin",
+    fontSize: normalize(14)
   },
   listContainerStyle: {
     paddingTop:20,
-    paddingBottom:20,
-    borderRadius:5,
+    paddingBottom:5,
   }
 })

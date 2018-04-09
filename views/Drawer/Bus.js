@@ -13,20 +13,20 @@ export default class Bus extends Component {
             { 
               icon: 'menu', 
               color: '#fff', 
-              size:normalize(30), 
+              size:normalize(20), 
               onPress: ()=> {this.props.navigation.navigate("DrawerOpen")}, 
               underlayColor: "rgba(0,0,0,0)"
             }
           }
           centerComponent={
             { 
-              text: '순환버스', 
+              text: '제대로 가자', 
               style: styles.headerCenterStyle, 
             }
           }
           outerContainerStyles={styles.headerStyle}
         />
-        <Text>리ㅏㄴㅁㄹ;러</Text>
+        <Text>리ㅏㄴㅁㄹ;러시러요ㅇ오옹오ㅣㅓㅏㅣㅓ</Text>
       </View>
     )
   }
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   headerCenterStyle: { 
     color: '#fff', 
-    fontSize: normalize(18), 
-    fontWeight: 'bold' 
+    fontSize: normalize(12), 
+    fontFamily:'NotoSansCJKkr-Thin'
   }
 })

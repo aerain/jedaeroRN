@@ -11,12 +11,14 @@ import {
   View,
   Image,
   TouchableOpacity,
+  WebView
 } from 'react-native';
 
 import { StackNavigator, NavigationActions } from 'react-navigation';
 
+import normalize from 'react-native-elements/src/helpers/normalizeText'
+
 import Main from './MainDrawer';
-import SmartCheck from './SmartCheck';
 
 class Home extends Component {
   constructor(props) {
@@ -61,16 +63,41 @@ export default StackNavigator (
   {
     Home: {
       screen: Home,
+      navigationOptions: {
+        header: null
+      }
     },
     Main : {
       screen : (props) => <Main />,
+      navigationOptions: {
+        header: null
+      }
     },
     eLearn : {
-      screen : (props) => <SmartCheck screenProps={props}/>,
-    }
-  },{
-    navigationOptions: {
-      header: null
+      screen : (props) => (
+        <View style={{flex:1}}>
+          <WebView source={{uri:'http://elearning.jejunu.ac.kr/'}} style={{flex:1}} />
+          <TouchableOpacity
+              style={{position:'absolute', right:20, bottom:20,}}
+              onPress={() => props.navigation.dispatch(NavigationActions.back())}
+          >
+              <View style={{width:70, height:70, backgroundColor:'rgba(0,0,0,.75)', borderRadius:40, justifyContent:'center', alignItems:'center'}}>
+              <Text style={{fontSize:normalize(30), fontWeight:'bold', color:'rgba(255,255,255,1)'}}>{"←"}</Text>
+              </View>
+          </TouchableOpacity>
+        </View>
+      ),
+      header: 'float',
+
+      navigationOptions: {
+        headerTitle: "스마트 출결",
+        headerStyle: {backgroundColor: 'rgba(12,80,160,1)'},
+        headerTitleStyle: {
+          fontWeight: 'normal',
+          fontFamily: "NotoSansCJKkr-Thin",
+          color:'white'
+        },
+      }
     }
   }
 )
@@ -106,5 +133,5 @@ const styles = StyleSheet.create({
     bottom: 20,
     width:50,
     height:75,
-  }
+  },
 });

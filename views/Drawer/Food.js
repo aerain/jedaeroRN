@@ -14,8 +14,8 @@ export default class FoodMainView extends Component {
     return (
       <View style={styles.container}>
         <Header
-          leftComponent={{ icon: 'menu', color: '#fff', size:normalize(30), onPress: ()=> {this.props.navigation.navigate("DrawerOpen")}, underlayColor: "rgba(0,0,0,0)"}}
-          centerComponent={{ text: '뭐먹을까', style: { color: '#fff', fontSize: normalize(18), fontWeight: 'bold' }}}
+          leftComponent={{ icon: 'menu', color: '#fff', size:normalize(20), onPress: ()=> {this.props.navigation.navigate("DrawerOpen")}, underlayColor: "rgba(0,0,0,0)"}}
+          centerComponent={{ text: '뭐먹을까', style: { color: '#fff', fontSize: normalize(12), fontFamily:"NotoSansCJKkr-Thin" }}}
           outerContainerStyles={styles.headerStyle}
         />
         <View style={{flex: 1}}>
@@ -33,9 +33,9 @@ const FoodStack = StackNavigator(
     },
     Haksik: {
       screen: (props) => (
-        <View style={{flex : 1, paddingTop:20}}>
-          <View style={{justifyContent: 'center', alignItems:'center'}}>
-            <Text style={{fontSize:normalize(30), fontWeight:'bold'}}>학식 메뉴</Text>
+        <View style={{flex : 1, }}>
+          <View elevation={2} style={{justifyContent: 'center', alignItems:'center', width: '100%', backgroundColor:'white' ,marginBottom:5}}>
+            <Text style={{fontSize:normalize(16), fontFamily: "NotoSansCJKkr-Thin"}}>학식 메뉴</Text>
           </View>
           <HaksikTap />
         </View>
@@ -55,6 +55,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerStyle: {
-    backgroundColor:'rgba(12,80,160,1)'
+    backgroundColor:'rgba(12,80,160,1)',
   },
 })
