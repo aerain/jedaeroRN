@@ -23,10 +23,7 @@ class Home extends Component {
     super(props);
   }
   render() {
-    const MainAction = NavigationActions.reset({
-      index: 0,
-      actions: [NavigationActions.navigate({routeName: 'Main'})],
-    })
+    
     return (
       <View style={styles.container}>
         <Image 
@@ -35,7 +32,7 @@ class Home extends Component {
           resizeMode="stretch"
         />
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => this.props.navigation.dispatch(MainAction)}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Main')}>
             <Image
               source={require('../images/tip_button.png')}
               resizeMode="stretch"
