@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ScrollView, View, Text, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import normalize from 'react-native-elements/src/helpers/normalizeText';
 import cheerio from 'react-native-cheerio';
-import { TabNavigator } from 'react-navigation';
+import { createBottomTabNavigator,  AuthenticationNavigator } from 'react-navigation';
 
 class Haksik extends Component {
   constructor(props) {
@@ -135,7 +135,8 @@ class HaksikList extends Component {
     )
   }
 }
-export default HaksikTap = TabNavigator (
+
+export default HaksikTap = createBottomTabNavigator (
   {
     Mon : {
       screen : (props) => <Haksik DoW="mon" />,
@@ -168,7 +169,6 @@ export default HaksikTap = TabNavigator (
       }
     }
   }, {
-    tabBarPosition: 'bottom',
     lazy: false,
     backBehavior: 'none',
     tabBarOptions: {

@@ -14,7 +14,7 @@ import {
   WebView
 } from 'react-native';
 
-import { StackNavigator, NavigationActions } from 'react-navigation';
+import { createStackNavigator, NavigationActions } from 'react-navigation';
 
 import normalize from 'react-native-elements/src/helpers/normalizeText'
 
@@ -59,7 +59,7 @@ class Home extends Component {
   }
 }
 
-export default StackNavigator (
+export default createStackNavigator (
   {
     Home: {
       screen: Home,
@@ -68,7 +68,7 @@ export default StackNavigator (
       }
     },
     Main : {
-      screen : (props) => <Main />,
+      screen : Main,
       navigationOptions: {
         header: null
       }
@@ -90,14 +90,20 @@ export default StackNavigator (
       header: 'float',
 
       navigationOptions: {
-        headerTitle: "스마트 출결",
-        headerStyle: {backgroundColor: 'rgba(12,80,160,1)'},
+        headerTitle: "스마트 출석",
+        headerStyle: {backgroundColor:'rgba(12,80,160,1)', height: 45} ,
         headerTitleStyle: {
           fontWeight: 'normal',
           fontFamily: "NotoSansCJKkr-Thin",
+          fontSize: normalize(12),
+          textAlign: 'center',
+        },
+        headerBackTitleStyle: {
           color:'white'
         },
-      }
+        headerTintColor: 'white',
+        gesturesEnabled: true,
+      },
     }
   }
 )

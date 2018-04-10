@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet ,SafeAreaView, ScrollView, View, Image, Text } from 'react-native';
 import { Header } from 'react-native-elements';
-import { DrawerNavigator, DrawerItems } from 'react-navigation';
+import { createDrawerNavigator, DrawerItems } from 'react-navigation';
 import normalize from 'react-native-elements/src/helpers/normalizeText'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
@@ -9,7 +9,10 @@ import Bus from './Drawer/Bus'
 import Food from './Drawer/Food'
 import library from './Drawer/library'
 
-export default Main = DrawerNavigator (
+import HaksikTap from './Drawer/FoodList/haksik'
+
+
+export default Main = createDrawerNavigator (
   {
     Bus : {
       screen : Bus,

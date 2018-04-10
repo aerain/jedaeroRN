@@ -22,7 +22,7 @@ export default class FoodList extends Component {
         name: '학생생활관',
         subtitle: '긱사 밥 노맛',
         _clickFood: () => {
-          Alert.alert("끼야악");
+          this.props.navigation.navigate("Dormitory")
         },
       },
       {

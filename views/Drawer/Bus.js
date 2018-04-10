@@ -25,6 +25,7 @@ export default class Bus extends Component {
             }
           }
           outerContainerStyles={styles.headerStyle}
+          placement='left'
         />
         <Text>리ㅏㄴㅁㄹ;러시러요ㅇ오옹오ㅣㅓㅏㅣㅓ</Text>
       </View>
@@ -36,6 +37,7 @@ export default class Bus extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height:45
   },
   headerStyle: {
     backgroundColor:'rgba(12,80,160,1)',
@@ -43,6 +45,7 @@ const styles = StyleSheet.create({
   headerCenterStyle: { 
     color: '#fff', 
     fontSize: normalize(12), 
-    fontFamily:'NotoSansCJKkr-Thin'
+    fontFamily:'NotoSansCJKkr-Thin',
+    paddingLeft:20
   }
 })
