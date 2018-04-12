@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createSwitchNavigator } from 'react-navigation';
 import { Header } from 'react-native-elements';
 import normalize from 'react-native-elements/src/helpers/normalizeText'
 
 import FoodList from './FoodList/foodlist';
-import HaksikTap from './FoodList/haksik'
+import HaksikTab from './FoodList/haksik'
 import Dormitory from './FoodList/dormitory';
 
 class HaksikMenu extends Component {
@@ -13,19 +13,20 @@ class HaksikMenu extends Component {
     super(props);
   }
 
-  static router = HaksikTap.router;
+  static router = HaksikTab.router;
+
   render() {
     return (
       <View style={{flex : 1, }}>
         <View elevation={2} style={{justifyContent: 'center', alignItems:'center', width: '100%', backgroundColor:'white' ,marginBottom:5}}>
           <Text style={{fontSize:normalize(16), fontFamily: "NotoSansCJKkr-Thin"}}>학식 메뉴</Text>
         </View>
-        <HaksikTap navigation={this.props.navigation} />
+        <HaksikTab navigation={this.props.navigation}/>
       </View>
     )
   }
 }
-const FoodStack = createStackNavigator(
+const FoodStack = createSwitchNavigator(
   {
     FoodList : {
       screen: FoodList, 
@@ -38,18 +39,17 @@ const FoodStack = createStackNavigator(
     }
   }, {
     initialRouteName: 'FoodList',
-    headerMode:'none',
+    backBehavior: 'initialRoute'
   }
 )
 
 export default class FoodMainView extends Component {
+  static router = FoodStack.router;
   constructor(props) {
     super(props);
   }
-
-  static router = FoodStack.router;
-
   render() {
+    console.log(this.props.navigation);
     return (
       <View style={styles.container}>
         <Header

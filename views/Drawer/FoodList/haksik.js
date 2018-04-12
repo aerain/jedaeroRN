@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ScrollView, View, Text, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import normalize from 'react-native-elements/src/helpers/normalizeText';
 import cheerio from 'react-native-cheerio';
-import { createBottomTabNavigator,  AuthenticationNavigator } from 'react-navigation';
+import { createBottomTabNavigator, NavigationActions } from 'react-navigation';
 
 class Haksik extends Component {
   constructor(props) {
@@ -102,13 +102,13 @@ class Haksik extends Component {
 
 
   render = () => {
-
+    console.log(this.props.navigation, "안쪽거 ");
     if(!this.state.meal) {
       return (
         <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
           <ActivityIndicator size={50} color='rgba(12,80,160,1)'/>
         </View>
-      ) 
+      )
     } else {
       return (
         <ScrollView style={styles.container}>
@@ -136,58 +136,66 @@ class HaksikList extends Component {
   }
 }
 
-export default HaksikTap = createBottomTabNavigator (
+let HaksikTap = createBottomTabNavigator (
   {
     Mon : {
-      screen : (props) => <Haksik DoW="mon" />,
+      screen : (props) => <Haksik DoW="mon" navigation={props.navigation}/>,
       navigationOptions: {
         title: "월"
       }
     },
     Tue : {
-      screen : (props) => <Haksik DoW="tue" />,
+      screen : (props) => <Haksik DoW="tue" navigation={props.navigation}/>,
       navigationOptions: {
         title: "화"
       }
     },
     Wed : {
-      screen : (props) => <Haksik DoW="wed" />,
+      screen : (props) => <Haksik DoW="wed" navigation={props.navigation}/>,
       navigationOptions: {
         title: "수"
       }
     },
     Thu : {
-      screen : (props) => <Haksik DoW="thu" />,
+      screen : (props) => <Haksik DoW="thu" navigation={props.navigation}/>,
       navigationOptions: {
         title: "목"
       }
     },
     Fri : {
-      screen : (props) => <Haksik DoW="fri" />,
+      screen : (props) => <Haksik DoW="fri" navigation={props.navigation}/>,
       navigationOptions: {
         title: "금"
       }
     }
   }, {
-    lazy: false,
     backBehavior: 'none',
     tabBarOptions: {
-      activeTintColor: "rgba(12,80,160,1)",
-      inactiveBackgroundColor: "white",
-      activeBackgroundColor:'rgba(12,80,160,1)',
-      inactiveTintColor: 'black',
+      activeTintColor: "white",
+      activeBackgroundColor: 'rgba(12,80,160,1)',
       labelStyle: {
-        fontSize: normalize(18),
+        fontSize: normalize(16),
         fontFamily: 'NotoSansCJKkr-Thin'
       }, 
       style: {
         backgroundColor:'white'
       },
-      renderIndicator: () => null
     },
     
   }
 );
+
+export default class print extends Component {
+  constructor(props) {
+    super(props);
+  }
+  static router = HaksikTap.router;
+
+  render = () => {
+    console.log(this.props.navigation, "입니다.")
+    return <HaksikTap navigation={this.props.navigation} />
+  }
+}
 
 let styles = StyleSheet.create({
   container: {

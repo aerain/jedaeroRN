@@ -25,7 +25,6 @@ class Home extends Component {
     super(props);
   }
   render() {
-    
     return (
       <View style={styles.container}>
         <Image 
@@ -74,9 +73,8 @@ export default createStackNavigator (
       }
     },
     eLearn : {
-      screen : (props) => (
-        <View style={{flex:1}}>
-          <WebView source={{uri:'http://elearning.jejunu.ac.kr/'}} style={{flex:1}} />
+      screen : (props) => [
+          <WebView source={{uri:'http://elearning.jejunu.ac.kr/'}} style={{flex:1}} />,
           <TouchableOpacity
               style={{position:'absolute', right:20, bottom:20,}}
               onPress={() => props.navigation.dispatch(NavigationActions.back())}
@@ -84,9 +82,8 @@ export default createStackNavigator (
               <View style={{width:70, height:70, backgroundColor:'rgba(0,0,0,.75)', borderRadius:40, justifyContent:'center', alignItems:'center'}}>
               <Text style={{fontSize:normalize(30), fontWeight:'bold', color:'rgba(255,255,255,1)'}}>{"←"}</Text>
               </View>
-          </TouchableOpacity>
-        </View>
-      ),
+          </TouchableOpacity>  
+      ],
       header: 'float',
 
       navigationOptions: {
@@ -96,7 +93,6 @@ export default createStackNavigator (
           fontWeight: 'normal',
           fontFamily: "NotoSansCJKkr-Thin",
           fontSize: normalize(12),
-          textAlign: 'center',
         },
         headerBackTitleStyle: {
           color:'white'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet ,SafeAreaView, ScrollView, View, Image, Text } from 'react-native';
+import { StyleSheet ,SafeAreaView, ScrollView, View, Image, Text, Alert } from 'react-native';
 import { Header } from 'react-native-elements';
-import { createDrawerNavigator, DrawerItems } from 'react-navigation';
+import { createDrawerNavigator, DrawerItems, NavigationActions } from 'react-navigation';
 import normalize from 'react-native-elements/src/helpers/normalizeText'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
@@ -10,7 +10,6 @@ import Food from './Drawer/Food'
 import library from './Drawer/library'
 
 import HaksikTap from './Drawer/FoodList/haksik'
-
 
 export default Main = createDrawerNavigator (
   {
@@ -42,7 +41,26 @@ export default Main = createDrawerNavigator (
           <View style={{paddingLeft:30, paddingRight:30, width:"100%", height:150, backgroundColor:'rgba(12,80,160,1)', justifyContent:'center', alignItems: 'center'}}>
             <Image source={require('../images/logo.png')} style={{width: "100%"}} resizeMode="contain" />
           </View>
-          <DrawerItems {...props} />
+          <DrawerItems {...props}
+            onItemPress= {({route, focused }) => {
+              // if (!focused) {
+              //   let subAction;
+              //   // if the child screen is a StackRouter then always navigate to its first screen (see #1914)
+              //   if (route.index !== undefined && route.index !== 0) {
+              //     subAction = NavigationActions.reset({
+              //       index: 0,
+              //       actions: [
+              //         NavigationActions.navigate({
+              //           routeName: route.routes[0].routeName,
+              //         }),
+              //       ],
+              //     });
+              //   }
+                // props.navigation.navigate(route.routeName, undefined, subAction);
+                props.navigation.navigate(route.routeName);
+              // }
+            }}
+          />
         </SafeAreaView>
       </ScrollView>
     ),
@@ -53,7 +71,8 @@ export default Main = createDrawerNavigator (
         fontSize: normalize(12),
         fontFamily: 'NotoSansCJKkr-Thin',
         fontWeight: "normal"
-      }
-    }
+      },
+    },
+
   }
 )

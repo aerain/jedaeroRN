@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import normalize from 'react-native-elements/src/helpers/normalizeText'
-import { createTabNavigator } from 'react-navigation'
+import { createBottomTabNavigator } from 'react-navigation'
 import cheerio from 'react-native-cheerio'
 import iconv from 'iconv-lite'
 
@@ -118,7 +118,7 @@ class Dorm extends Component {
   }
 }
 
-export default DormTap = createTabNavigator (
+export default DormTap = createBottomTabNavigator (
   {
     Mon : {
       screen : (props) => <Dorm DoW="mon" />,
