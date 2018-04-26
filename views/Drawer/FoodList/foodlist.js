@@ -53,19 +53,18 @@ export default class FoodList extends Component {
     return (
       <ScrollView>
         {
-          listText.map((l, i) => (
-            <View key={i} elevation={2} style={{marginBottom:10, backgroundColor:'white'}}>
-              <ListItem
-                title={l.name}
-                subtitle={l.subtitle}
-                titleStyle={styles.listTitleStyle}
-                subtitleStyle={styles.listSubtitleStyle}
-                containerStyle={styles.listContainerStyle}
-                onPress={l._clickFood}
-                underlayColor="rgba(0,0,0,0)"
-                hideChevron={true}
-              />
-            </View>
+          listText.map((item, key) => (
+            <ListItem
+              key={key}
+              title={item.name}
+              subtitle={item.subtitle}
+              titleStyle={styles.listTitleStyle}
+              subtitleStyle={styles.listSubtitleStyle}
+              containerStyle={styles.listContainerStyle}
+              onPress={item._clickFood}
+              underlayColor="rgba(0,0,0,0)"
+              hideChevron={true}
+            />
           ))
         }
       </ScrollView>
@@ -88,5 +87,7 @@ const styles = StyleSheet.create({
   listContainerStyle: {
     paddingTop:20,
     paddingBottom:5,
+    marginBottom:10,
+    backgroundColor:'white'
   }
 })

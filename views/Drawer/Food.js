@@ -1,45 +1,51 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 import { Header } from 'react-native-elements';
 import normalize from 'react-native-elements/src/helpers/normalizeText'
 
 import FoodList from './FoodList/foodlist';
 import HaksikTab from './FoodList/haksik'
-import Dormitory from './FoodList/dormitory';
+import DormTab from './FoodList/dormitory';
 
-class HaksikMenu extends Component {
-  constructor(props) {
-    super(props);
-  }
 
-  static router = HaksikTab.router;
-
-  render() {
-    return (
-      <View style={{flex : 1, }}>
-        <View elevation={2} style={{justifyContent: 'center', alignItems:'center', width: '100%', backgroundColor:'white' ,marginBottom:5}}>
-          <Text style={{fontSize:normalize(16), fontFamily: "NotoSansCJKkr-Thin"}}>학식 메뉴</Text>
-        </View>
-        <HaksikTab navigation={this.props.navigation}/>
-      </View>
-    )
-  }
-}
-const FoodStack = createSwitchNavigator(
+const FoodStack = createStackNavigator(
   {
     FoodList : {
-      screen: FoodList, 
+      screen: FoodList,
+      navigationOptions: {
+        header:null
+      }
     },
     Haksik: {
-      screen: HaksikMenu,
+      screen: HaksikTab,
+      navigationOptions: {
+        headerTitle: "백두관 식당",
+      }
     },
     Dormitory: {
-      screen: Dormitory,
+      screen: DormTab,
+      navigationOptions: {
+        headerTitle: "기숙사 식당"
+      }
     }
   }, {
     initialRouteName: 'FoodList',
-    backBehavior: 'initialRoute'
+    backBehavior: 'initialRoute',
+    headerMode:'float',
+    headerTransitionPreset: 'uikit',
+    navigationOptions: {
+      headerTintColor:'white',
+      headerTitleStyle: {
+        fontSize:normalize(14),
+        textAlign:'center',
+        fontFamily:'NotoSansCJKkr-Thin',
+        fontWeight:'normal'
+      },
+      headerStyle: {
+        backgroundColor:'rgba(12,80,160,1)'
+      }
+    }
   }
 )
 
@@ -49,17 +55,15 @@ export default class FoodMainView extends Component {
     super(props);
   }
   render() {
-    console.log(this.props.navigation);
-    return (
-      <View style={styles.container}>
-        <Header
-          leftComponent={{ icon: 'menu', color: '#fff', size:normalize(20), onPress: ()=> {this.props.navigation.navigate("DrawerOpen")}, underlayColor: "rgba(0,0,0,0)"}}
-          centerComponent={{ text: '뭐먹을까', style: { color: '#fff', fontSize: normalize(12), fontFamily:"NotoSansCJKkr-Thin" }}}
-          outerContainerStyles={styles.headerStyle}
-        />
-        <FoodStack navigation={this.props.navigation} />
-      </View>
-    )
+    return [
+      <Header
+        leftComponent={{ icon: 'menu', color: '#fff', size:normalize(20), onPress: ()=> {this.props.navigation.openDrawer()}, underlayColor: "rgba(0,0,0,0)"}}
+        centerComponent={{ text: '뭐먹을까', style: { color: '#fff', fontSize: normalize(12), fontFamily:"NotoSansCJKkr-Thin" }}}
+        outerContainerStyles={styles.headerStyle}
+        key="header"
+      />,
+      <FoodStack navigation={this.props.navigation} key="foodstack" />
+    ]
   }
 }
 
@@ -69,5 +73,6 @@ const styles = StyleSheet.create({
   },
   headerStyle: {
     backgroundColor:'rgba(12,80,160,1)',
+    borderBottomWidth:0,
   },
 })

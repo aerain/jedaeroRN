@@ -7,9 +7,7 @@ import { createBottomTabNavigator, NavigationActions } from 'react-navigation';
 class Haksik extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      
-    }
+    this.state = {}
   }
   componentDidMount = () => this.haksikCrawl(); // componentDidMount는 클래스 접근했을때 바로 실행되는거
 
@@ -102,11 +100,10 @@ class Haksik extends Component {
 
 
   render = () => {
-    console.log(this.props.navigation, "안쪽거 ");
     if(!this.state.meal) {
       return (
-        <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-          <ActivityIndicator size={50} color='rgba(12,80,160,1)'/>
+        <View style={{alignItems: 'center'}}>
+          <ActivityIndicator size={35} color='rgba(12,80,160,1)'/>
         </View>
       )
     } else {
@@ -126,12 +123,12 @@ class Haksik extends Component {
 class HaksikList extends Component {
   render() {
     return (
-      <View elevation={1} style={styles.list}>
-        <View style={styles.foodlistContainer}>
+      <TouchableOpacity style={styles.list} activeOpacity={0.8}>
+        <View elevation={2} style={styles.foodlistContainer}>
           <Text style={styles.foodlistTitle}>{this.props.title}</Text>
         </View>
         <Text style={styles.foodlist}>{this.props.food}</Text>
-      </View>
+      </TouchableOpacity>
     )
   }
 }
@@ -192,7 +189,6 @@ export default class print extends Component {
   static router = HaksikTap.router;
 
   render = () => {
-    console.log(this.props.navigation, "입니다.")
     return <HaksikTap navigation={this.props.navigation} />
   }
 }

@@ -84,8 +84,7 @@ export default createStackNavigator (
               </View>
           </TouchableOpacity>  
       ],
-      header: 'float',
-
+      headerTransitionPreset:'uikit',
       navigationOptions: {
         headerTitle: "스마트 출석",
         headerStyle: {backgroundColor:'rgba(12,80,160,1)', height: 45} ,
@@ -101,6 +100,8 @@ export default createStackNavigator (
         gesturesEnabled: true,
       },
     }
+  }, {
+    headerMode: 'float',
   }
 )
 

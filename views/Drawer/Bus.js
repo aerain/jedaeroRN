@@ -6,34 +6,34 @@ import normalize from 'react-native-elements/src/helpers/normalizeText'
 
 export default class Bus extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Header
-          leftComponent={
-            { 
-              icon: 'menu', 
-              color: '#fff', 
-              size:normalize(20), 
-              onPress: () => this.props.navigation.navigate('DrawerOpen'), 
-              underlayColor: "rgba(0,0,0,0)"
-            }
+    return [
+      <Header
+        leftComponent={
+          { 
+            icon: 'menu', 
+            color: '#fff', 
+            size:normalize(20), 
+            onPress: () => this.props.navigation.openDrawer(), 
+            underlayColor: "rgba(0,0,0,0)"
           }
-          centerComponent={
-            { 
-              text: '제대로 가자', 
-              style: styles.headerCenterStyle, 
-            }
+        }
+        centerComponent={
+          { 
+            text: '제대로 가자', 
+            style: styles.headerCenterStyle, 
           }
-          outerContainerStyles={styles.headerStyle}
-          placement='left'
-        />
-        <Text>리ㅏㄴㅁㄹ;러시러요ㅇ오옹오ㅣㅓㅏㅣㅓ</Text>
-        <Button 
-          title="테스트"
-          onPress={()=> this.props.navigation.navigate("eLearn")}
-        />
-      </View>
-    )
+        }
+        outerContainerStyles={styles.headerStyle}
+        placement='left'
+        key="header"
+      />,
+      <Text key="content">리ㅏㄴㅁㄹ;러시러요ㅇ오옹오ㅣㅓㅏㅣㅓ</Text>,
+      <Button 
+        title="테스트"
+        onPress={()=> this.props.navigation.navigate("eLearn")}
+        key="testbutton"
+      />
+    ]
   }
 }
 
