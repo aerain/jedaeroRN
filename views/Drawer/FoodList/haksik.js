@@ -17,7 +17,7 @@ class Haksik extends Component {
     req.open('GET', uri, true);
     req.responseType = 'text';
     req.setRequestHeader("Content-Type", "text/plain");
-    req.onreadystatechange = () => {
+    req.onload = () => {
       if(req.readyState == 4 && req.status == 200) {
         let $ = cheerio.load(req.responseText);
         {

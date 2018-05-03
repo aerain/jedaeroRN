@@ -30,7 +30,7 @@ export default class Bus extends Component {
       <Text key="content">리ㅏㄴㅁㄹ;러시러요ㅇ오옹오ㅣㅓㅏㅣㅓ</Text>,
       <Button 
         title="테스트"
-        onPress={()=> this.props.navigation.navigate("eLearn")}
+        onPress={()=> this.props.navigation.navigate("Dormitory")}
         key="testbutton"
       />
     ]

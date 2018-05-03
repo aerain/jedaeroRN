@@ -15,105 +15,106 @@ class Dorm extends Component {
   DormCrawl = async () => {
     let uri = 'http://dormitory.neo-internet.co.kr/board/adm/Recipe/restaurant.php'
     let req = new XMLHttpRequest();
-    req.open('GET', uri, true);
-    req.responseType = 'text';
-    req.setRequestHeader("User-Agent", "KHTML, like Gecko");
-    req.setRequestHeader("Content-Type", "text/html; charset=CP949");
-    req.onreadystatechange = () => {
-      if(req.readyState == 4 && req.status == 200) {
-        let $ = cheerio.load(req.responseText);
-        console.log(req.responseText);
-        {
-            strjson = '{ "title" : "기숙사 생활관 식당", ';
-            countday = 0;
-            countmenu = 0;
-            $('.wanted > tbody > tr > td').each(function() {
-              strjson += '"dormitory' + countday + '_' + countmenu + '" : "' + $(this).text() + '", ';
-              countmenu++;
-              if (countmenu % 6 === 0){
-                countmenu = 1;
-                countday++;
-              }
-            });
-            strjson += '"blank" : ""}';
-            strjson = strjson.replace(/\n/gi, '\\r\\n');
-            
-            data = JSON.parse(strjson);
 
-            switch (this.props.DoW) {
-              case "mon":
-                this.setState({
-                  meal: {
-                    dawn : data.dormitory1_1,
-                    breakfast : data.dormitory1_2,
-                    lunch: data.dormitory1_3,
-                    dinner: data.dormitory1_4,
-                  }
-                })
-                break;
-              case "tue":
-                this.setState({
-                  meal: {
-                    dawn : data.dormitory2_1,
-                    breakfast : data.dormitory2_2,
-                    lunch: data.dormitory2_3,
-                    dinner: data.dormitory2_4,
-                  }
-                })
-                break;
-              case "wed":
-                this.setState({
-                  meal: {
-                    dawn : data.dormitory3_1,
-                    breakfast : data.dormitory3_2,
-                    lunch: data.dormitory3_3,
-                    dinner: data.dormitory3_4,
-                  }
-                })
-                break;
-              case "thu":
-                this.setState({
-                  meal: {
-                    dawn : data.dormitory4_1,
-                    breakfast : data.dormitory4_2,
-                    lunch: data.dormitory4_3,
-                    dinner: data.dormitory4_4,
-                  }
-                })
-                  break;
-              case "fri":
-                this.setState({
-                  meal: {
-                    dawn : data.dormitory5_1,
-                    breakfast : data.dormitory5_2,
-                    lunch: data.dormitory5_3,
-                    dinner: data.dormitory5_4,
-                  }
-                })
-                break;
-                case "sat":
-                this.setState({
-                  meal: {
-                    dawn : data.dormitory6_1,
-                    breakfast : data.dormitory6_2,
-                    lunch: data.dormitory6_3,
-                    dinner: data.dormitory6_4,
-                  }
-                })
-                break;
-                case "sun":
-                this.setState({
-                  meal: {
-                    dawn : data.dormitory7_1,
-                    breakfast : data.dormitory7_2,
-                    lunch: data.dormitory7_3,
-                    dinner: data.dormitory7_4,
-                  }
-                })
-                break;
-            }
-          }
-        }
+    req.open('GET', uri, true);
+    req.responseType = 'document';
+    req.setRequestHeader("User-Agent", "KHTML, like Gecko");
+    req.setRequestHeader("Content-Type", "text/plain; charset=EUC-KR");
+    req.onload = () => {
+      console.error(req.responseURL);
+      // if(req.readyState == 4 && req.status == 200) {
+        // let $ = cheerio.load(req.response);
+        // {
+        //     strjson = '{ "title" : "기숙사 생활관 식당", ';
+        //     countday = 0;
+        //     countmenu = 0;
+        //     $('.wanted > tbody > tr > td').each(function() {
+        //       strjson += '"dormitory' + countday + '_' + countmenu + '" : "' + $(this).text() + '", ';
+        //       countmenu++;
+        //       if (countmenu % 6 === 0){
+        //         countmenu = 1;
+        //         countday++;
+        //       }
+        //     });
+        //     strjson += '"blank" : ""}';
+        //     strjson = strjson.replace(/\n/gi, '\\r\\n');
+            
+        //     data = JSON.parse(strjson);
+
+        //     switch (this.props.DoW) {
+        //       case "mon":
+        //         this.setState({
+        //           meal: {
+        //             dawn : data.dormitory1_1,
+        //             breakfast : data.dormitory1_2,
+        //             lunch: data.dormitory1_3,
+        //             dinner: data.dormitory1_4,
+        //           }
+        //         })
+        //         break;
+        //       case "tue":
+        //         this.setState({
+        //           meal: {
+        //             dawn : data.dormitory2_1,
+        //             breakfast : data.dormitory2_2,
+        //             lunch: data.dormitory2_3,
+        //             dinner: data.dormitory2_4,
+        //           }
+        //         })
+        //         break;
+        //       case "wed":
+        //         this.setState({
+        //           meal: {
+        //             dawn : data.dormitory3_1,
+        //             breakfast : data.dormitory3_2,
+        //             lunch: data.dormitory3_3,
+        //             dinner: data.dormitory3_4,
+        //           }
+        //         })
+        //         break;
+        //       case "thu":
+        //         this.setState({
+        //           meal: {
+        //             dawn : data.dormitory4_1,
+        //             breakfast : data.dormitory4_2,
+        //             lunch: data.dormitory4_3,
+        //             dinner: data.dormitory4_4,
+        //           }
+        //         })
+        //           break;
+        //       case "fri":
+        //         this.setState({
+        //           meal: {
+        //             dawn : data.dormitory5_1,
+        //             breakfast : data.dormitory5_2,
+        //             lunch: data.dormitory5_3,
+        //             dinner: data.dormitory5_4,
+        //           }
+        //         })
+        //         break;
+        //         case "sat":
+        //         this.setState({
+        //           meal: {
+        //             dawn : data.dormitory6_1,
+        //             breakfast : data.dormitory6_2,
+        //             lunch: data.dormitory6_3,
+        //             dinner: data.dormitory6_4,
+        //           }
+        //         })
+        //         break;
+        //         case "sun":
+        //         this.setState({
+        //           meal: {
+        //             dawn : data.dormitory7_1,
+        //             breakfast : data.dormitory7_2,
+        //             lunch: data.dormitory7_3,
+        //             dinner: data.dormitory7_4,
+        //           }
+        //         })
+        //         break;
+        //     }
+        //   }
+        // }
     }
     req.send();  
   }
