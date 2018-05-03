@@ -12,13 +12,15 @@ class Haksik extends Component {
   componentDidMount = () => this.haksikCrawl(); // componentDidMount는 클래스 접근했을때 바로 실행되는거
 
   haksikCrawl = async () => {
-    try {
-      let uri = 'http://www.jejunu.ac.kr/camp/stud/foodmenu'
-      let response = await fetch(uri);
-      let bodyHtml = await response.text();
-      let $ = cheerio.load(bodyHtml);
-  
-      {
+    let uri = 'http://www.jejunu.ac.kr/camp/stud/foodmenu'
+    let req = new XMLHttpRequest();
+    req.open('GET', uri, true);
+    req.responseType = 'text';
+    req.setRequestHeader("Content-Type", "text/plain");
+    req.onreadystatechange = () => {
+      if(req.readyState == 4 && req.status == 200) {
+        let $ = cheerio.load(req.responseText);
+        {
           strjson = '{ "title" : "백두관 식당", ';
           countday = 1;
           countmenu = 1;
@@ -92,17 +94,17 @@ class Haksik extends Component {
               })
               break;
           }
+        }  
       }
-    } catch (error) {
-        console.error(error);
-    }  
+    }
+    req.send();    
   }
 
 
   render = () => {
     if(!this.state.meal) {
       return (
-        <View style={{alignItems: 'center'}}>
+        <View style={{alignItems: 'center', paddingTop:20}}>
           <ActivityIndicator size={35} color='rgba(12,80,160,1)'/>
         </View>
       )
