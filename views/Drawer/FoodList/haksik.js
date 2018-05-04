@@ -3,6 +3,7 @@ import { ScrollView, View, Text, StyleSheet, ActivityIndicator, TouchableOpacity
 import normalize from 'react-native-elements/src/helpers/normalizeText';
 import cheerio from 'react-native-cheerio';
 import { createBottomTabNavigator, NavigationActions } from 'react-navigation';
+import axios from 'axios';
 
 class Haksik extends Component {
   constructor(props) {
@@ -13,13 +14,13 @@ class Haksik extends Component {
 
   haksikCrawl = async () => {
     let uri = 'http://www.jejunu.ac.kr/camp/stud/foodmenu'
-    let req = new XMLHttpRequest();
-    req.open('GET', uri, true);
-    req.responseType = 'text';
-    req.setRequestHeader("Content-Type", "text/plain");
-    req.onload = () => {
-      if(req.readyState == 4 && req.status == 200) {
-        let $ = cheerio.load(req.responseText);
+    try {
+      let res = await axios.get(uri, {
+        method: 'get',
+        contentType: 'text',
+      });
+      let resBody = await res.data;
+      let $ = cheerio.load(resBody);
         {
           strjson = '{ "title" : "백두관 식당", ';
           countday = 1;
@@ -94,10 +95,10 @@ class Haksik extends Component {
               })
               break;
           }
-        }  
-      }
+        }
+    } catch (error) {
+      console.error(error);
     }
-    req.send();    
   }
 
 

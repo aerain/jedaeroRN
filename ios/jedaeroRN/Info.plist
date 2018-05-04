@@ -45,9 +45,9 @@
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>
-			<key>jejunu.ac.kr</key>
+			<string>jejunu.ac.kr</string>
 			<key>lib.jejunu.ac.kr</key>
-			<key>elearning.jejunu.ac.kr</key>
+			<string>elearning.jejunu.ac.kr</string>
 			<key>dreamy.jejunu.ac.kr</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>

@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, Text, TextInput } from 'react-native';
 import Home from './views/Home';
+import Dorm from './views/Drawer/FoodList/dormitory'
 
 export default class App extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ export default class App extends Component {
           backgroundColor="rgba(12,80,160,1)"
           barStyle="light-content"
         />
-        <Home />
+        <Dorm />
       </SafeAreaView>
     );
   }
