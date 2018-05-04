@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from 'react-navigation';
 import cheerio from 'react-native-cheerio'
 import iconv from 'iconv-lite'
 import { Buffer } from 'buffer'
-import axios from 'axios';
+import Frisbee from 'frisbee';
 
 class Dorm extends Component {
   constructor(props) {
@@ -16,34 +16,44 @@ class Dorm extends Component {
 
   DormCrawl = async () => {
     let uri = 'http://dormitory.neo-internet.co.kr/';
+    fetch(uri + "board/adm/Recipe/restaurant.php", {
+      method:"GET",
+      mode:"no-cors"
+    })
+    .then(response=>{
+      return response.blob()
+    })
+    .then(res => console.error("success", res))
+    .catch(err=>console.error(err))
     // let api = new Frisbee({
     //   baseURI: uri,
     //   headers: {
-    //     'Accept': 'text/plain',
+    //     'Accept': 'text/html',
     //     'Content-Type': 'text/html; charset=euc-kr',
     //   }
     // })
-    try {
-      // let res = await api.get('/../../../', {
-      //   method: 'GET',
+   
+  }
+      // let res = await api.get('/board/adm/Recipe/restaurant.php', {
       //   headers: {
       //     "User-Agent": "Mozilla/5.1, KHTML, like Gecko",
-      //     "Content-Type": "text/html; charset=euc-kr"
+      //     "Content-Type": "text/html; charset=utf-8"
       //   },
       // });
-      let res = await axios('/board/adm/Recipe/restaurant.php', {
-        baseURL: uri,
-        method: 'get',
-        contentType: 'text',
-        headers: {
-          "User-Agent": "Mozilla/5.1, KHTML, like Gecko",
-          'Accept': 'text/html',
-          "Content-Type": 'text/html; charset=utf-8'
-        },
-      })
-      let resBody = await res.data;
-      console.error(resBody);
-      // let $ = cheerio.load(res.body);
+      // let res = await axios('/', {
+      //   baseURL: uri,
+      //   method: 'get',
+      //   contentType: 'text',
+      //   headers: {
+      //     "User-Agent": "Mozilla/5.1, KHTML, like Gecko",
+      //     'Accept': 'text/html',
+      //     "Content-Type": 'text/html; charset=utf-8'
+      //   },
+      // })
+      // let resBody = await res.body;
+      // console.log(resBody)
+      // console.error("Body 값은", resBody);
+      // let $ = cheerio.load(resBody);
       // {
       //   strjson = '{ "title" : "기숙사 생활관 식당", ';
       //   countday = 0;
@@ -134,10 +144,6 @@ class Dorm extends Component {
       //       break;
       //   }
       // }
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
 
 
