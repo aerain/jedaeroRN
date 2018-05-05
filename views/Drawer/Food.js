@@ -7,7 +7,8 @@ import normalize from 'react-native-elements/src/helpers/normalizeText'
 import FoodList from './FoodList/foodlist';
 import HaksikTab from './FoodList/haksik'
 import DormTab from './FoodList/dormitory';
-import Etc from './FoodList/etc';
+import Etcetra from './FoodList/etc';
+import DetailsList from './FoodList/detailslist'
 
 const FoodStack = createStackNavigator(
   {
@@ -30,21 +31,29 @@ const FoodStack = createStackNavigator(
       }
     },
     Korean: {
-      screen: (props) => <Etc navigation={props.navigation} menu="korean" />,
+      screen: props => <Etcetra navigation={props.navigation} listed="korean" />,
       navigationOptions: {
         headerTitle: "한식"
       }
     },
     Chinese: {
-      screen: (props) => <Etc navigation={props.navigation} menu="chinese" />,
+      screen: props => <Etcetra navigation={props.navigation} listed="chinese" />,
       navigationOptions: {
         headerTitle: "중,일,양식"
       }
     },
     Chicken: {
-      screen: (props) => <Etc navigation={props.navigation} menu="chicken" />,
+      screen: props => <Etcetra navigation={props.navigation} listed="chicken" />,
       navigationOptions: {
         headerTitle: "치킨"
+      }
+    },
+    DetailsList: {
+      screen: DetailsList,
+      navigationOptions: (props) => {
+        return {
+          headerTitle: props.navigation.getParam('name', '바부또비니')
+        }
       }
     }
   }, {
@@ -62,7 +71,7 @@ const FoodStack = createStackNavigator(
       },
       headerStyle: {
         backgroundColor:'rgba(12,80,160,1)'
-      }
+      },
     }
   }
 )
