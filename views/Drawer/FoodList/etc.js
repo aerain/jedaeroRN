@@ -5,7 +5,7 @@ export default class etcList extends Component {
     render = () => {
         return (
             <View style={styles.View}>
-                <Text>Empty View</Text>
+                <Text>{this.props.menu} Empty View</Text>
             </View>
         )
     }

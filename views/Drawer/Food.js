@@ -30,19 +30,19 @@ const FoodStack = createStackNavigator(
       }
     },
     Korean: {
-      screen: <Etc navigation={this.props.navigation} menu="korean" />,
+      screen: (props) => <Etc navigation={props.navigation} menu="korean" />,
       navigationOptions: {
         headerTitle: "한식"
       }
     },
     Chinese: {
-      screen: <Etc navigation={this.props.navigation} menu="chinese" />,
+      screen: (props) => <Etc navigation={props.navigation} menu="chinese" />,
       navigationOptions: {
         headerTitle: "중,일,양식"
       }
     },
     Chicken: {
-      screen: <Etc navigation={this.props.navigation} menu="chicken" />,
+      screen: (props) => <Etc navigation={props.navigation} menu="chicken" />,
       navigationOptions: {
         headerTitle: "치킨"
       }
