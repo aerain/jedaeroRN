@@ -5,14 +5,29 @@
 */
 
 import React, { Component } from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text, TextInput } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, Text, TextInput, PermissionsAndroid } from 'react-native';
 import Home from './views/Home';
-import Dorm from './views/Drawer/FoodList/dormitory'
 
 export default class App extends Component {
   constructor(props) {
     super(props);
   }
+  
+  componentDidMount = () => this.requestPermissions();
+  
+  requestPermissions = async () => {
+    try {
+        await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        )
+        await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        )
+    } catch (error) {
+        console.warn(error);
+    }
+  };
+
   render() {
     return (
       <SafeAreaView style={styles.main}>
@@ -20,7 +35,7 @@ export default class App extends Component {
           backgroundColor="rgba(12,80,160,1)"
           barStyle="light-content"
         />
-        <Dorm />
+        <Home />
       </SafeAreaView>
     );
   }

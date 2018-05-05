@@ -7,7 +7,7 @@ import normalize from 'react-native-elements/src/helpers/normalizeText'
 import FoodList from './FoodList/foodlist';
 import HaksikTab from './FoodList/haksik'
 import DormTab from './FoodList/dormitory';
-
+import Etc from './FoodList/etc';
 
 const FoodStack = createStackNavigator(
   {
@@ -27,6 +27,24 @@ const FoodStack = createStackNavigator(
       screen: DormTab,
       navigationOptions: {
         headerTitle: "기숙사 식당"
+      }
+    },
+    Korean: {
+      screen: <Etc navigation={this.props.navigation} menu="korean" />,
+      navigationOptions: {
+        headerTitle: "한식"
+      }
+    },
+    Chinese: {
+      screen: <Etc navigation={this.props.navigation} menu="chinese" />,
+      navigationOptions: {
+        headerTitle: "중,일,양식"
+      }
+    },
+    Chicken: {
+      screen: <Etc navigation={this.props.navigation} menu="chicken" />,
+      navigationOptions: {
+        headerTitle: "치킨"
       }
     }
   }, {

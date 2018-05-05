@@ -3,7 +3,8 @@ import { ScrollView, View, Text, StyleSheet, ActivityIndicator, TouchableOpacity
 import normalize from 'react-native-elements/src/helpers/normalizeText';
 import cheerio from 'react-native-cheerio';
 import { createBottomTabNavigator, NavigationActions } from 'react-navigation';
-import axios from 'axios';
+import RNFetchBlob from 'react-native-fetch-blob'
+
 
 class Haksik extends Component {
   constructor(props) {
@@ -15,12 +16,8 @@ class Haksik extends Component {
   haksikCrawl = async () => {
     let uri = 'http://www.jejunu.ac.kr/camp/stud/foodmenu'
     try {
-      let res = await axios.get(uri, {
-        method: 'get',
-        contentType: 'text',
-      });
-      let resBody = await res.data;
-      let $ = cheerio.load(resBody);
+      let res = await RNFetchBlob.fetch('GET', uri);
+      let $ = cheerio.load(res.text());
         {
           strjson = '{ "title" : "백두관 식당", ';
           countday = 1;

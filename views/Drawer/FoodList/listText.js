@@ -1,76 +1,49 @@
 import React from 'react';
-import { Alert } from 'react-native';
-import { Avatar } from 'react-native-elements';
 
-export default listText = [
-  {
-    name: '신관',
-    subtitle: '학생회관 밥',
-    _clickFood: () => {
-      console.log(this)
+let listText = (call) => {
+  let list = [
+    {
+      key: 'haksik',
+      name: '신관',
+      subtitle: '학생회관 밥',
+      _clickFood: () => {
+        call.props.navigation.navigate("Haksik")
+      },
     },
-    icon: (
-      <Avatar 
-        medium
-        source={require('../../../images/rice.png')}
-        overlayContainerStyle={{backgroundColor: 'rgba(0,0,0,0)'}}
-      />
-    )
-  },
-  {
-    name: '학생생활관',
-    subtitle: '긱사 밥 노맛',
-    _clickFood: () => {
-      Alert.alert("끼야악");
+    {
+      key: 'dormitory',
+      name: '학생생활관',
+      subtitle: '긱사 밥 노맛',
+      _clickFood: () => {
+        call.props.navigation.navigate("Dormitory")
+      },
     },
-    icon: (
-      <Avatar 
-        medium
-        source={require('../../../images/rice.png')}
-        overlayContainerStyle={{backgroundColor: 'rgba(0,0,0,0)'}}
-      />
-    )
-  },
-  {
-    name: '한식',
-    subtitle: '갈비찜 존맛탱',
-    _clickFood: () => {
-      Alert.alert("끼야악");
+    {
+      key: 'korean',
+      name: '한식',
+      subtitle: '갈비찜 존맛탱',
+      _clickFood: () => {
+        call.props.navigation.navigate("Korean")
+      },
     },
-    icon: (
-      <Avatar 
-        medium
-        source={require('../../../images/rice.png')}
-        overlayContainerStyle={{backgroundColor: 'rgba(0,0,0,0)'}}
-      />
-    )
-  },
-  {
-    name: '중•일•양식',
-    subtitle: '짬뽕 존맛탱',
-    _clickFood: () => {
-      Alert.alert("끼야악");
+    {
+      key: 'foreign',
+      name: '중•일•양식',
+      subtitle: '짬뽕 존맛탱',
+      _clickFood: () => {
+        call.props.navigation.navigate("Chinese")
+      },
     },
-    icon: (
-      <Avatar 
-        medium
-        source={require('../../../images/rice.png')}
-        overlayContainerStyle={{backgroundColor: 'rgba(0,0,0,0)'}}
-      />
-    )
-  },
-  {
-    name: '치킨',
-    subtitle: '치킨은 양념이지',
-    _clickFood: () => {
-      Alert.alert("끼야악");
+    {
+      key: 'chicken',
+      name: '치킨',
+      subtitle: '치킨은 양념이지',
+      _clickFood: () => {
+        call.props.navigation.navigate("Chicken")
+      },
     },
-    icon: (
-      <Avatar 
-        medium
-        source={require('../../../images/rice.png')}
-        overlayContainerStyle={{backgroundColor: 'rgba(0,0,0,0)'}}
-      />
-    )
-  },
-]
+  ]
+  return list;
+}
+
+export default listText;
