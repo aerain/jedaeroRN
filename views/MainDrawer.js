@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet ,SafeAreaView, ScrollView, View, Image, Text, Alert } from 'react-native';
 import { Header } from 'react-native-elements';
-import { createDrawerNavigator, DrawerItems, NavigationActions } from 'react-navigation';
+import { createDrawerNavigator, DrawerItems, NavigationActions, StackActions } from 'react-navigation';
 import normalize from 'react-native-elements/src/helpers/normalizeText'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
@@ -11,12 +11,13 @@ import library from './Drawer/library'
 
 import HaksikTap from './Drawer/FoodList/haksik'
 
+
 export default Main = createDrawerNavigator (
   {
     Bus : {
       screen : Bus,
       navigationOptions: {
-        title: "순환버스",
+        title: "홈",
         drawerIcon : ({ tintColor }) => <Icon name="bus" size={normalize(12)} color={tintColor} />
       }
     },
@@ -47,7 +48,7 @@ export default Main = createDrawerNavigator (
               //   let subAction;
               //   // if the child screen is a StackRouter then always navigate to its first screen (see #1914)
               //   if (route.index !== undefined && route.index !== 0) {
-              //     subAction = NavigationActions.reset({
+              //     subAction = StackActions.reset({
               //       index: 0,
               //       actions: [
               //         NavigationActions.navigate({
@@ -58,8 +59,9 @@ export default Main = createDrawerNavigator (
               //   }
                 // props.navigation.navigate(route.routeName, undefined, subAction);
                 props.navigation.navigate(route.routeName);
-              // }
-            }}
+              
+            }
+          }
           />
         </SafeAreaView>
       </ScrollView>

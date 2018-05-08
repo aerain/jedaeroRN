@@ -38,9 +38,7 @@ class Haksik extends Component {
           strjson = strjson.replace(/\n/gi, '\\r\\n');
 
           data = JSON.parse(strjson);
-
-          console.log(data);
-
+          
           switch (this.props.DoW) {
             case "mon":
               this.setState({

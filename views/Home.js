@@ -11,46 +11,77 @@ import {
   View,
   Image,
   TouchableOpacity,
-  WebView
+  WebView,
+  Alert
 } from 'react-native';
 
-import { createStackNavigator, NavigationActions } from 'react-navigation';
+import { createStackNavigator, NavigationActions, StackActions } from 'react-navigation';
 
 import normalize from 'react-native-elements/src/helpers/normalizeText'
 
 import Main from './MainDrawer';
 
+// class Home extends Component {
+//   constructor(props) {
+//     super(props);
+//   }
+//   render() {
+//     return (
+//       <View style={styles.container}>
+//         <Image 
+//           source={require('../images/logo.png')}
+//           style={styles.logo}
+//           resizeMode="stretch"
+//         />
+//         <View style={styles.buttonContainer}>
+//           <TouchableOpacity onPress={() => this.props.navigation.navigate('Main')}>
+//             <Image
+//               source={require('../images/tip_button.png')}
+//               resizeMode="stretch"
+//               style={styles.button}
+//             />
+//           </TouchableOpacity>
+//           <TouchableOpacity onPress={() => this.props.navigation.navigate("eLearn")} >
+//             <Image
+//               source={require('../images/smart_button.png')}
+//               resizeMode="stretch"
+//               style={styles.button}
+//             />
+//           </TouchableOpacity>
+//         </View>
+//         <Image 
+//           source={require('../images/jeju_logo.png')}
+//           style={styles.jeju}
+//           resizeMode="stretch"
+//         />
+//       </View>
+//     );
+//   }
+// }
+
 class Home extends Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount = () => {
+    setTimeout(this.splashScreen, 1500);
+  }
+
+  splashScreen = () => {
+    this.props.navigation.dispatch(StackActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({ routeName: 'Main' })
+      ]
+    }))
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Image 
+        <Image
           source={require('../images/logo.png')}
           style={styles.logo}
-          resizeMode="stretch"
-        />
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Main')}>
-            <Image
-              source={require('../images/tip_button.png')}
-              resizeMode="stretch"
-              style={styles.button}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate("eLearn")} >
-            <Image
-              source={require('../images/smart_button.png')}
-              resizeMode="stretch"
-              style={styles.button}
-            />
-          </TouchableOpacity>
-        </View>
-        <Image 
-          source={require('../images/jeju_logo.png')}
-          style={styles.jeju}
           resizeMode="stretch"
         />
       </View>
@@ -100,6 +131,7 @@ export default createStackNavigator (
       },
     }
   }, {
+    initialRouteName: 'Home',
     headerMode: 'screen',
   }
 )
