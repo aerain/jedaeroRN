@@ -36,12 +36,12 @@ const styles = StyleSheet.create({
   listTitleStyle: {
     fontSize: normalize(20),
     textAlign:'center',
-    fontFamily: 'NotoSansCJKkr-Thin',
+    fontFamily: 'NotoSansCJKkr-Regular',
     fontWeight: 'bold',
   },
   listSubtitleStyle: {
     textAlign:'center',
-    fontFamily: "NotoSansCJKkr-Thin",
+    fontFamily: "NotoSansCJKkr-Regular",
     fontSize: normalize(14)
   },
   listContainerStyle: {

@@ -26,12 +26,13 @@ export default class etcList extends Component {
         }
         return (
             <ScrollView>
+                <View style={styles.scrollView}>
                 {
                     Listing.map((l, i) => (
                         <ListItem
                             key={i}
                             title={l.name}
-                            titleStyle={{fontFamily: "NotoSansCJKkr-Thin"}}
+                            titleStyle={{fontFamily: "NotoSansCJKkr-Regular"}}
                             containerStyle={{backgroundColor: 'white', paddingLeft:20}}
                             onPress={()=>this.props.navigation.navigate('DetailsList',
                                 {
@@ -45,6 +46,7 @@ export default class etcList extends Component {
                         />
                     ))
                 }
+                </View>
             </ScrollView>
         )
     }
@@ -54,5 +56,8 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent: 'center',
         alignItems:'center',
+    },
+    scrollView : {
+        marginBottom:50
     }
 })

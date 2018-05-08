@@ -69,7 +69,7 @@ export default Main = createDrawerNavigator (
       activeBackgroundColor:'rgba(12,80,160,.7)',
       labelStyle: {
         fontSize: normalize(12),
-        fontFamily: 'NotoSansCJKkr-Thin',
+        fontFamily: 'NotoSansCJKkr-Regular',
         fontWeight: "normal"
       },
     },

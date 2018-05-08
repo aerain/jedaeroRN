@@ -89,7 +89,7 @@ export default createStackNavigator (
         headerStyle: {backgroundColor:'rgba(12,80,160,1)', height: 45} ,
         headerTitleStyle: {
           fontWeight: 'normal',
-          fontFamily: "NotoSansCJKkr-Thin",
+          fontFamily: "NotoSansCJKkr-Regular",
           fontSize: normalize(12),
         },
         headerBackTitleStyle: {

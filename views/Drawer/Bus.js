@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   headerCenterStyle: { 
     color: '#fff', 
     fontSize: normalize(12), 
-    fontFamily:'NotoSansCJKkr-Thin',
+    fontFamily:'NotoSansCJKkr-Regular',
     paddingLeft:20
   }
 })

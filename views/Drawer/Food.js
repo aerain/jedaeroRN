@@ -66,7 +66,7 @@ const FoodStack = createStackNavigator(
       headerTitleStyle: {
         fontSize:normalize(14),
         textAlign:'center',
-        fontFamily:'NotoSansCJKkr-Thin',
+        fontFamily:'NotoSansCJKkr-Regular',
         fontWeight:'normal'
       },
       headerStyle: {
@@ -85,7 +85,7 @@ export default class FoodMainView extends Component {
     return [
       <Header
         leftComponent={{ icon: 'menu', color: '#fff', size:normalize(20), onPress: ()=> {this.props.navigation.openDrawer()}, underlayColor: "rgba(0,0,0,0)"}}
-        centerComponent={{ text: '뭐먹을까', style: { color: '#fff', fontSize: normalize(12), fontFamily:"NotoSansCJKkr-Thin" }}}
+        centerComponent={{ text: '뭐먹을까', style: { color: '#fff', fontSize: normalize(12), fontFamily:"NotoSansCJKkr-Regular" }}}
         outerContainerStyles={styles.headerStyle}
         key="header"
       />,

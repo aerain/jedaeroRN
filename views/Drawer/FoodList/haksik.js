@@ -22,72 +22,78 @@ class Haksik extends Component {
           strjson = '{ "title" : "백두관 식당", ';
           countday = 1;
           countmenu = 1;
-          $('.table.border_left.border_top_blue > tbody > tr > td > p').each(function() {
-              strjson += '"baekdu' + countday + "_" + countmenu + '" : "' + $(this).text() + '", ';
+          $('.table.border_left.border_top_blue > tbody > tr > td').each(function() {
+              TempText = $(this).text()
+              TempText = TempText.substring(1); // CRLF 제거
+              TempText = TempText.trim(); // 빈 공백 제거
+
+              strjson += '"baekdu' + countday + "_" + countmenu + '" : "' + TempText + '", ';
               countmenu++;
-              if (countmenu % 9 === 0){
+              if (countmenu % 14 === 0){
               countmenu = 1;
               countday++;
               }
           });
           strjson += '"blank" : ""}';
           strjson = strjson.replace(/\n/gi, '\\r\\n');
-          
+
           data = JSON.parse(strjson);
+
+          console.log(data);
 
           switch (this.props.DoW) {
             case "mon":
               this.setState({
                 meal: {
-                  combo : data.baekdu1_1,
-                  dinner : data.baekdu1_2,
-                  special: data.baekdu1_3,
-                  western: data.baekdu1_5,
-                  chinese : data.baekdu1_7,
+                  combo : data.baekdu1_3,
+                  dinner : data.baekdu1_4,
+                  special: data.baekdu1_6,
+                  western: data.baekdu1_9,
+                  chinese : data.baekdu1_12,
                 }
               })
               break;
             case "tue":
               this.setState({
                 meal: {
-                  combo : data.baekdu2_1,
-                  dinner : data.baekdu2_2,
-                  special: data.baekdu2_3,
-                  western: data.baekdu2_5,
-                  chinese : data.baekdu2_7,
+                  combo : data.baekdu2_3,
+                  dinner : data.baekdu2_4,
+                  special: data.baekdu2_6,
+                  western: data.baekdu2_9,
+                  chinese : data.baekdu2_12,
                 }
               })
               break;
             case "wed":
               this.setState({
                 meal: {
-                  combo : data.baekdu3_1,
-                  dinner : data.baekdu3_2,
-                  special: data.baekdu3_3,
-                  western: data.baekdu3_5,
-                  chinese : data.baekdu3_7,
+                  combo : data.baekdu3_3,
+                  dinner : data.baekdu3_4,
+                  special: data.baekdu3_6,
+                  western: data.baekdu3_9,
+                  chinese : data.baekdu3_12,
                 }
               })
               break;
             case "thu":
               this.setState({
                 meal: {
-                  combo : data.baekdu4_1,
-                  dinner : data.baekdu4_2,
-                  special: data.baekdu4_3,
-                  western: data.baekdu4_5,
-                  chinese : data.baekdu4_7,
+                  combo : data.baekdu4_3,
+                  dinner : data.baekdu4_4,
+                  special: data.baekdu4_6,
+                  western: data.baekdu4_9,
+                  chinese : data.baekdu4_12,
                 }
               })
                 break;
             case "fri":
               this.setState({
                 meal: {
-                  combo : data.baekdu4_8,
-                  dinner : data.baekdu5_1,
-                  special: data.baekdu5_2,
-                  western: data.baekdu5_4,
-                  chinese : data.baekdu5_6,
+                  combo : data.baekdu5_3,
+                  dinner : data.baekdu5_4,
+                  special: data.baekdu5_6,
+                  western: data.baekdu5_9,
+                  chinese : data.baekdu5_12,
                 }
               })
               break;
@@ -172,7 +178,7 @@ let HaksikTap = createBottomTabNavigator (
       activeBackgroundColor: 'rgba(12,80,160,1)',
       labelStyle: {
         fontSize: normalize(16),
-        fontFamily: 'NotoSansCJKkr-Thin'
+        fontFamily: 'NotoSansCJKkr-Regular'
       }, 
       style: {
         backgroundColor:'white'
@@ -201,7 +207,7 @@ let styles = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center'
   },
-  foodlist: {fontSize:normalize(16), textAlign:'center', fontFamily:'NotoSansCJKkr-Thin'},
+  foodlist: {fontSize:normalize(16), textAlign:'center', fontFamily:'NotoSansCJKkr-Regular'},
   foodlistContainer: {
     backgroundColor:'rgba(12,80,160,1)',
     borderTopLeftRadius:20,
@@ -210,7 +216,7 @@ let styles = StyleSheet.create({
   foodlistTitle: {
     textAlign:'center',
     fontSize: normalize(20),
-    fontFamily: 'NotoSansCJKkr-Thin',
+    fontFamily: 'NotoSansCJKkr-Regular',
     color:'white'
   },
   list: {

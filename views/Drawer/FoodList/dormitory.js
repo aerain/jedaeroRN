@@ -29,7 +29,9 @@ class Dorm extends Component {
         countday = 0;
         countmenu = 0;
         $('.wanted > tbody > tr > td').each(function() {
-          strjson += '"dormitory' + countday + '_' + countmenu + '" : "' + $(this).text() + '", ';
+          TempText = $(this).text();
+
+          strjson += '"dormitory' + countday + '_' + countmenu + '" : "' + TempText + '", ';
           countmenu++;
           if (countmenu % 6 === 0){
             countmenu = 1;
@@ -202,7 +204,7 @@ let DormTap = createBottomTabNavigator(
       activeBackgroundColor: 'rgba(12,80,160,1)',
       labelStyle: {
         fontSize: normalize(16),
-        fontFamily: 'NotoSansCJKkr-Thin'
+        fontFamily: 'NotoSansCJKkr-Regular'
       },
       style: {
         backgroundColor: 'white'
@@ -231,7 +233,7 @@ let styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  foodlist: { fontSize: normalize(16), textAlign: 'center', fontFamily: 'NotoSansCJKkr-Thin' },
+  foodlist: { fontSize: normalize(16), textAlign: 'center', fontFamily: 'NotoSansCJKkr-Regular' },
   foodlistContainer: {
     backgroundColor: 'rgba(12,80,160,1)',
     borderTopLeftRadius: 20,
@@ -240,7 +242,7 @@ let styles = StyleSheet.create({
   foodlistTitle: {
     textAlign: 'center',
     fontSize: normalize(20),
-    fontFamily: 'NotoSansCJKkr-Thin',
+    fontFamily: 'NotoSansCJKkr-Regular',
     color: 'white'
   },
   list: {
